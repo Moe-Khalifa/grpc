@@ -1,0 +1,60 @@
+syntax = "proto3";
+package ibkr;
+option go_package = "./ibkr";
+
+
+service PriceData {
+
+    rpc GetOptionPrices (OptionPricesRequest) returns (OptionPricesResponse);
+    rpc GetUnderlyingPrice (UnderlyingPriceRequest) returns (UnderlyingPriceResponse);
+    rpc GetOptionGreeks (OptionGreeksRequest) returns (OptionGreeksResponse);
+
+}
+
+message Optionibkr {
+    string type = 1;
+    string ticker = 2;
+    float strike = 3;
+    string expiry = 4;
+
+}
+
+message Greeksibkr {
+    float iv =1;
+    float delta =2;
+    float gamma =3;
+    float vega =4;
+    float theta =5;
+
+}
+
+message OptionPricesRequest {
+    repeated Optionibkr option = 1;
+}
+
+
+message OptionPricesResponse {
+    repeated float price =1;
+    
+}
+
+
+message UnderlyingPriceRequest {
+    string ticker = 1;
+}
+
+message UnderlyingPriceResponse {
+    float price =1;
+    
+}
+
+message OptionGreeksRequest {
+    repeated Optionibkr option = 1;
+}
+
+
+message OptionGreeksResponse {
+    repeated Greeksibkr greeks = 1;
+    
+}
+
