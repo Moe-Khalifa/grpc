@@ -4,4 +4,4 @@ generate:
 	--go_opt=paths=source_relative \
 	--go-grpc_out=ibkr \
 	--go-grpc_opt=paths=source_relative \
-	helloworld.proto
+	ibkr.proto
